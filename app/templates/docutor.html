@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block mainbody %}
+{% load static %}
+
+<!-- ======= Appointment Section ======= -->
+
+<div class="container pt-5">
+    <section class="content-box boxstyle-2 box-2">
+        <div class="zerogrid">
+            <div class="row wrap-box"><!--Start Box-->
+                <div class="header"><div class="wrapper">
+                    <center><h2>Our Doctor</h2></center>
+                    <div class="line"></div>
+                </div></div>	
+                {% for docuter in Docutors %}
+                <div class="row">
+                    <div class="col-1-2">
+                        <div class="post">
+                            <div class="col-1-3">
+                                <div class="wrap-col">
+                                    <a href="#"><img src="{{docuter.photo.url}}"/></a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-2-3">
+                                <div class="wrap-col">
+                                    <h3>Dr. {{docuter.name}}</h3>
+                                    <p>{{docuter.specialzation}}</p>
+                                    <p>With {{docuter.experience}} of Experience</p>
+                                    <p>Contact {{docuter.phone}}</p>
+                                    {% if session == True %}
+                                    <a class="button button02 f-right" href="/donedocuter/{{docuter.id}}/">Select</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                {% endfor %}
+               
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock mainbody %}

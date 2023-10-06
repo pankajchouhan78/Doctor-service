@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block mainbody %}
+{% load static %}
+
+<!-- ======= Appointment Section ======= -->
+
+<div class="container pt-5">
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}}" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+    <form action="/register_docuter/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="text-center pb-3">Register Docutor Here</h2>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Your Name" name="name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Your Email" name="email">
+            </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Mobile No." name="phone">
+            </div>
+
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Your Degree" name="degree">
+            </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Experience" name="exp">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Specialization" name="spe">
+            </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col">
+                <select class="form-select" aria-label="Default select example" name="gender">
+                    <option selected>Select Your Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Femal</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col">
+                <label for="aa">Appoiment Date</label>
+                <input type="date" name="date" class="form-control datepicker pt-2" id="date"
+                    placeholder="Appointment Date">
+            </div>
+            <div class="col">
+                <label>Your Image</label>
+                <input type="file" class="form-control pt-2" name="photo" required>
+            </div>
+        </div>
+
+        <div class="col">
+            <label>Your password</label>
+            <input type="password" class="form-control pt-2" name="password" required>
+        </div>
+
+        <div class="mt-3 mb-3">
+            <textarea class="form-control" placeholder="Enter Your Address Here" name="address"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register Docutor</button>
+    </form>
+
+</div>
+
+
+
+
+
+{% endblock mainbody %}
